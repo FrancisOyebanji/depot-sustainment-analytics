@@ -1,0 +1,6 @@
+# Core analytics + simulation: Python standard library + pandas.
+pandas>=2.0
+pytest>=7.0
+# PySpark pipeline (transforms/pipeline.py). Optional locally — the orchestrator
+# falls back to an identical pandas clean step when Spark is unavailable.
+# pyspark>=3.5

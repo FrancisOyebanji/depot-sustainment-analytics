@@ -1,0 +1,57 @@
+{
+  "horizon_days": 421.7,
+  "hours_per_day": 24,
+  "work_centers": [
+    {
+      "work_center": "Repair",
+      "servers": 6,
+      "demand_hours": 75373.5,
+      "capacity_hours": 60727.2,
+      "utilization_pct": 124.1,
+      "implied_capacity_per_day": 4.74,
+      "steps": 2481
+    },
+    {
+      "work_center": "Disassembly",
+      "servers": 2,
+      "demand_hours": 16057.8,
+      "capacity_hours": 20242.4,
+      "utilization_pct": 79.3,
+      "implied_capacity_per_day": 7.43,
+      "steps": 2484
+    },
+    {
+      "work_center": "Assembly",
+      "servers": 4,
+      "demand_hours": 26927.2,
+      "capacity_hours": 40484.8,
+      "utilization_pct": 66.5,
+      "implied_capacity_per_day": 8.85,
+      "steps": 2481
+    },
+    {
+      "work_center": "Test",
+      "servers": 2,
+      "demand_hours": 13370.3,
+      "capacity_hours": 20242.4,
+      "utilization_pct": 66.1,
+      "implied_capacity_per_day": 8.9,
+      "steps": 2479
+    },
+    {
+      "work_center": "Inspection",
+      "servers": 2,
+      "demand_hours": 10928.5,
+      "capacity_hours": 20242.4,
+      "utilization_pct": 54.0,
+      "implied_capacity_per_day": 10.91,
+      "steps": 2485
+    }
+  ],
+  "bottleneck": {
+    "work_center": "Repair",
+    "utilization_pct": 124.1,
+    "implied_throughput_units_per_day": 4.74
+  },
+  "recommendation": "Repair is the constraint at 124.1% utilization (capacity ~4.74 units/day). Per Theory of Constraints, system throughput is capped here; adding one server at Repair is the highest-leverage capacity investment \u2014 quantified in the simulation."
+}

@@ -1,0 +1,146 @@
+{
+  "scenarios": {
+    "baseline": {
+      "servers": {
+        "Disassembly": 2,
+        "Inspection": 2,
+        "Repair": 6,
+        "Assembly": 4,
+        "Test": 2
+      },
+      "completions_in_window": 954,
+      "throughput_per_day": 4.77,
+      "mean_flow_time_hours": 824.08,
+      "p90_flow_time_hours": 1219.7,
+      "utilization_pct": {
+        "Disassembly": 79.9,
+        "Inspection": 52.1,
+        "Repair": 99.8,
+        "Assembly": 52.8,
+        "Test": 52.6
+      },
+      "max_queue": {
+        "Disassembly": 11,
+        "Inspection": 2,
+        "Repair": 291,
+        "Assembly": 3,
+        "Test": 3
+      }
+    },
+    "add_1_repair_server": {
+      "servers": {
+        "Disassembly": 2,
+        "Inspection": 2,
+        "Repair": 7,
+        "Assembly": 4,
+        "Test": 2
+      },
+      "completions_in_window": 1101,
+      "throughput_per_day": 5.5,
+      "mean_flow_time_hours": 361.56,
+      "p90_flow_time_hours": 517.1,
+      "utilization_pct": {
+        "Disassembly": 80.0,
+        "Inspection": 52.0,
+        "Repair": 99.3,
+        "Assembly": 62.4,
+        "Test": 62.0
+      },
+      "max_queue": {
+        "Disassembly": 14,
+        "Inspection": 3,
+        "Repair": 87,
+        "Assembly": 3,
+        "Test": 4
+      }
+    },
+    "add_2_repair_servers": {
+      "servers": {
+        "Disassembly": 2,
+        "Inspection": 2,
+        "Repair": 8,
+        "Assembly": 4,
+        "Test": 2
+      },
+      "completions_in_window": 1202,
+      "throughput_per_day": 6.01,
+      "mean_flow_time_hours": 91.96,
+      "p90_flow_time_hours": 133.3,
+      "utilization_pct": {
+        "Disassembly": 79.3,
+        "Inspection": 52.4,
+        "Repair": 93.4,
+        "Assembly": 65.5,
+        "Test": 63.9
+      },
+      "max_queue": {
+        "Disassembly": 16,
+        "Inspection": 3,
+        "Repair": 26,
+        "Assembly": 4,
+        "Test": 4
+      }
+    },
+    "add_1_repair_and_test": {
+      "servers": {
+        "Disassembly": 2,
+        "Inspection": 2,
+        "Repair": 7,
+        "Assembly": 4,
+        "Test": 3
+      },
+      "completions_in_window": 1101,
+      "throughput_per_day": 5.51,
+      "mean_flow_time_hours": 356.58,
+      "p90_flow_time_hours": 523.98,
+      "utilization_pct": {
+        "Disassembly": 79.2,
+        "Inspection": 52.2,
+        "Repair": 99.0,
+        "Assembly": 60.8,
+        "Test": 41.2
+      },
+      "max_queue": {
+        "Disassembly": 16,
+        "Inspection": 3,
+        "Repair": 103,
+        "Assembly": 3,
+        "Test": 2
+      }
+    }
+  },
+  "comparison": [
+    {
+      "scenario": "baseline",
+      "throughput_per_day": 4.77,
+      "throughput_gain_pct": 0.0,
+      "mean_flow_time_hours": 824.08,
+      "flow_time_reduction_pct": 0.0,
+      "repair_utilization_pct": 99.8
+    },
+    {
+      "scenario": "add_1_repair_server",
+      "throughput_per_day": 5.5,
+      "throughput_gain_pct": 15.3,
+      "mean_flow_time_hours": 361.56,
+      "flow_time_reduction_pct": 56.1,
+      "repair_utilization_pct": 99.3
+    },
+    {
+      "scenario": "add_2_repair_servers",
+      "throughput_per_day": 6.01,
+      "throughput_gain_pct": 26.0,
+      "mean_flow_time_hours": 91.96,
+      "flow_time_reduction_pct": 88.8,
+      "repair_utilization_pct": 93.4
+    },
+    {
+      "scenario": "add_1_repair_and_test",
+      "throughput_per_day": 5.51,
+      "throughput_gain_pct": 15.5,
+      "mean_flow_time_hours": 356.58,
+      "flow_time_reduction_pct": 56.7,
+      "repair_utilization_pct": 99.0
+    }
+  ]
+}

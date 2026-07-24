@@ -1,0 +1,35 @@
+{
+  "rows_scanned": 12500,
+  "total_issues_found": 90,
+  "fidelity_score_pct": 99.28,
+  "catalog": [
+    {
+      "issue": "missing_arrival_timestamp",
+      "severity": "high",
+      "count": 30,
+      "pct_of_rows": 0.24,
+      "recommendation": "Backfill from source MRO system event log; block load until populated."
+    },
+    {
+      "issue": "negative_or_zero_processing_hours",
+      "severity": "high",
+      "count": 25,
+      "pct_of_rows": 0.2,
+      "recommendation": "Reject at ingest; flag originating work center for clock/entry audit."
+    },
+    {
+      "issue": "orphan_work_center",
+      "severity": "medium",
+      "count": 20,
+      "pct_of_rows": 0.16,
+      "recommendation": "Map to canonical work-center list or route to a review queue."
+    },
+    {
+      "issue": "out_of_sequence_step",
+      "severity": "medium",
+      "count": 15,
+      "pct_of_rows": 0.12,
+      "recommendation": "Validate routing against the standard process; correct step_seq."
+    }
+  ]
+}
