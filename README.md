@@ -1,4 +1,32 @@
-# Depot Sustainment Analytics — PySpark Pipeline + Operations-Research Digital Twin
+# Supply Chain & Operations Analytics — Planning COE + Operations-Research Digital Twin
+
+**A supply-chain planning and operations-analytics system: demand forecasting, inventory optimization, network design, and ABC/XYZ demand mining with a predictive fast-mover model — on top of an MRO operations-research pipeline (PySpark data pipeline, constraint analysis, discrete-event simulation). Python + SQL.**
+
+> **In one breath (Supply Chain Planning focus):** Built a supply-chain planning suite spanning the COE's full scope — an ML demand-forecasting backtest that beats a seasonal-naive baseline by ~15% WAPE on a held-out quarter, inventory optimization (safety stock / reorder point / EOQ) whose (s,Q) policies are *simulation-validated* to hit a 95% service level, a capacitated facility-location network design solved with a drop heuristic that matches the brute-force optimum (saving ~7% vs opening all DCs), and ABC/XYZ demand mining plus a gradient-boosted fast-mover classifier (ROC-AUC 0.71) — every model graded against known ground truth, atop an operations-research digital twin for capacity/bottleneck analysis.
+
+## Supply Chain Planning COE (headline for the Supply Chain data-science role)
+
+The planning work the COE runs — forecasting, inventory, network, and demand mining — each graded against a known data-generating process:
+
+```bash
+pip install -r requirements.txt
+PYTHONPATH=src python -m supply_chain.run_supply_chain     # forecast -> inventory -> network -> mining
+PYTHONPATH=src python -m supply_chain.build_dashboard      # planning dashboard
+PYTHONPATH=src python -m pytest tests/test_supply_chain.py -q   # 6 tests, graded vs truth
+```
+
+| Capability | Method | Result (synthetic benchmark) |
+|---|---|---|
+| **Demand forecasting** ([demand_forecasting.py](src/supply_chain/demand_forecasting.py)) | GBM on lag/calendar features vs seasonal-naive, out-of-time backtest | WAPE **0.30 vs 0.35 naive (+15%)**, bias ≈ 0 |
+| **Inventory optimization** ([inventory_optimization.py](src/supply_chain/inventory_optimization.py)) | safety stock / reorder point / EOQ + (s,Q) simulation | **95% service target achieved** (sim fill 0.99), 95% of SKUs meet target |
+| **Network design** ([network_design.py](src/supply_chain/network_design.py)) | capacitated facility location: LP transport + drop heuristic | **heuristic = brute-force optimum** (0% gap), saves ~7% vs all-open |
+| **Demand mining + prediction** ([abc_xyz.py](src/supply_chain/abc_xyz.py)) | ABC (Pareto) / XYZ (CV) + GBM fast-mover classifier | A-class = 48% of SKUs / **79% of revenue**; fast-mover **AUC 0.71** |
+
+The through-line is **optimization validated against ground truth**: forecasts are backtested out-of-time, the inventory policy is *simulated* to confirm it hits its service target (not just computed from a formula), and the network heuristic is checked against the brute-force optimum. That maps directly to the JD's forecasting, ML modeling, **network design**, and **inventory optimization** scope, plus data mining and predictive models of product behavior.
+
+---
+
+## Depot Sustainment Analytics (the operations-research foundation)
 
 **A depot maintenance (MRO) analytics system: a PySpark data pipeline with a data-fidelity monitoring layer, industrial-engineering constraint analysis, and a discrete-event simulation (digital twin) that runs what-if capacity scenarios and produces a leadership decision briefing.**
 

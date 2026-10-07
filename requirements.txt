@@ -1,5 +1,9 @@
 # Core analytics + simulation: Python standard library + pandas.
 pandas>=2.0
+numpy>=1.24
+# Supply Chain Planning module (forecasting, inventory, network design, data mining):
+scikit-learn>=1.3
+scipy>=1.10
 pytest>=7.0
 # PySpark pipeline (transforms/pipeline.py). Optional locally — the orchestrator
 # falls back to an identical pandas clean step when Spark is unavailable.

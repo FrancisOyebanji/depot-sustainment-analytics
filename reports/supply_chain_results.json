@@ -1,0 +1,142 @@
+{
+  "forecasting": {
+    "n_skus": 40,
+    "holdout_weeks": 13,
+    "wape_ml": 0.2965,
+    "wape_naive": 0.3508,
+    "bias_ml": -0.0236,
+    "ml_beats_naive": true,
+    "improvement_vs_naive_pct": 15.5
+  },
+  "inventory": {
+    "service_level_target": 0.95,
+    "n_skus": 40,
+    "mean_achieved_fill_rate": 0.989,
+    "pct_skus_meeting_target": 0.95,
+    "safety_stock_investment": 665150.0,
+    "policies_sample": [
+      {
+        "sku": "SKU0000",
+        "safety_stock": 339.5,
+        "reorder_point": 1942.6,
+        "eoq": 1164.1,
+        "z": 1.645,
+        "achieved_fill_rate": 1.0
+      },
+      {
+        "sku": "SKU0001",
+        "safety_stock": 399.9,
+        "reorder_point": 1598.4,
+        "eoq": 373.8,
+        "z": 1.645,
+        "achieved_fill_rate": 0.9956
+      },
+      {
+        "sku": "SKU0002",
+        "safety_stock": 74.9,
+        "reorder_point": 348.8,
+        "eoq": 232.8,
+        "z": 1.645,
+        "achieved_fill_rate": 1.0
+      },
+      {
+        "sku": "SKU0003",
+        "safety_stock": 320.5,
+        "reorder_point": 1022.0,
+        "eoq": 585.0,
+        "z": 1.645,
+        "achieved_fill_rate": 0.9989
+      },
+      {
+        "sku": "SKU0004",
+        "safety_stock": 138.0,
+        "reorder_point": 910.5,
+        "eoq": 301.8,
+        "z": 1.645,
+        "achieved_fill_rate": 0.9984
+      },
+      {
+        "sku": "SKU0005",
+        "safety_stock": 109.3,
+        "reorder_point": 283.1,
+        "eoq": 412.4,
+        "z": 1.645,
+        "achieved_fill_rate": 0.9995
+      },
+      {
+        "sku": "SKU0006",
+        "safety_stock": 80.1,
+        "reorder_point": 203.1,
+        "eoq": 218.5,
+        "z": 1.645,
+        "achieved_fill_rate": 1.0
+      },
+      {
+        "sku": "SKU0007",
+        "safety_stock": 23.5,
+        "reorder_point": 88.9,
+        "eoq": 221.1,
+        "z": 1.645,
+        "achieved_fill_rate": 0.9981
+      }
+    ]
+  },
+  "network": {
+    "n_candidate_dcs": 5,
+    "optimum": {
+      "open_dcs": [
+        1,
+        3,
+        4
+      ],
+      "cost": 17992.7
+    },
+    "heuristic": {
+      "open_dcs": [
+        1,
+        3,
+        4
+      ],
+      "cost": 17992.7
+    },
+    "optimality_gap_pct": 0.0,
+    "heuristic_is_optimal": true,
+    "savings_vs_all_open_pct": 7.2,
+    "cost_all_open": 19397.9
+  },
+  "segmentation": {
+    "abc_counts": {
+      "A": 29,
+      "C": 16,
+      "B": 15
+    },
+    "xyz_counts": {
+      "Y": 43,
+      "Z": 15,
+      "X": 2
+    },
+    "a_class_revenue_share": 0.79,
+    "a_class_sku_share": 0.483,
+    "matrix": {
+      "AX": 0,
+      "AY": 21,
+      "AZ": 8,
+      "BX": 1,
+      "BY": 12,
+      "BZ": 2,
+      "CX": 1,
+      "CY": 10,
+      "CZ": 5
+    }
+  },
+  "fast_mover_model": {
+    "auc": 0.714,
+    "n_skus": 60,
+    "fast_mover_rate": 0.25,
+    "top_drivers": [
+      "hist_mean",
+      "hist_std",
+      "price"
+    ]
+  }
+}
