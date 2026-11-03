@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Revenue Management</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f6f8;color:#14223a;margin:0}
+ header{background:#123a5e;color:#fff;padding:16px 30px} h1{font-size:20px;margin:0}
+ .sub{color:#b7cde0;font-size:13px}
+ main{max-width:1080px;margin:22px auto;padding:0 18px}
+ .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:20px}
+ .kpi{background:#fff;border:1px solid #e2e8ef;border-radius:12px;padding:16px}
+ .kpi .l{color:#5c7086;font-size:13px}.kpi .v{font-size:21px;font-weight:700;margin-top:4px;color:#123a5e}
+ .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+ .panel{background:#fff;border:1px solid #e2e8ef;border-radius:12px;padding:18px;margin-bottom:18px}
+ .panel h2{font-size:15px;margin:0 0 12px} canvas{max-height:280px}
+ table{width:100%;border-collapse:collapse;font-size:13px} th,td{padding:7px 9px;border-bottom:1px solid #eef2f6;text-align:center}
+ th{color:#5c7086}
+ .note{background:#e8eff6;border-left:4px solid #123a5e;padding:10px 14px;border-radius:6px;font-size:14px}
+ @media(max-width:800px){.grid{grid-template-columns:1fr}}
+ footer{color:#5c7086;font-size:12px;text-align:center;margin:24px 0}
+</style></head><body>
+<header><h1>Revenue Management &amp; Pricing &mdash; decision science</h1>
+<div class="sub">Nonlinear price optimization &middot; EMSR capacity allocation &middot; stochastic overbooking &middot; simulation-validated</div></header>
+<main>
+<div class="kpis"><div class='kpi'><div class='l'>Optimal price</div><div class='v'>$73</div></div><div class='kpi'><div class='l'>Price vs truth</div><div class='v'>±$0.5</div></div><div class='kpi'><div class='l'>EMSR revenue uplift</div><div class='v'>+124%</div></div><div class='kpi'><div class='l'>Overbook seats</div><div class='v'>+14</div></div><div class='kpi'><div class='l'>Overbooking profit gain</div><div class='v'>$2,182</div></div><div class='kpi'><div class='l'>Elasticity @ optimum</div><div class='v'>-1.38</div></div></div>
+<div class="grid">
+ <div class="panel"><h2>Profit vs price (nonlinear optimum)</h2><canvas id="c1"></canvas>
+   <p style="font-size:13px;color:#5c7086;margin-top:10px">Recovered demand curve; optimal price
+   $73 matches the true optimum $72.</p></div>
+ <div class="panel"><h2>Capacity allocation &mdash; EMSR vs FCFS revenue</h2><canvas id="c2"></canvas>
+   <p style="font-size:13px;color:#5c7086;margin-top:10px">Booking limits [100, 78, 35, 0] protect
+   high-fare seats for a +124% revenue uplift.</p></div>
+</div>
+<div class="panel"><h2>Overbooking &mdash; expected profit vs sell limit</h2><canvas id="c3"></canvas>
+ <p style="font-size:13px;color:#5c7086;margin-top:10px">Optimal sell limit 114
+ (overbook 14 seats; expected 1.5 denied boardings);
+ analytic $22,182 matches simulation $22,176.</p></div>
+<div class="panel"><h2>Why it maps to the role</h2><div class="note">
+ Revenue management, pricing and resource allocation via nonlinear optimization (pricing),
+ a seat-protection heuristic (EMSR), and stochastic optimization (overbooking) &mdash; each validated by
+ Monte Carlo simulation and graded against a known optimum.
+</div></div>
+</main>
+<footer>Synthetic data &middot; src/revenue_management/build_dashboard.py &middot; optima graded vs ground truth + simulation</footer>
+<script>
+new Chart(c1,{type:'line',data:{labels:[30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 111, 114, 117, 120],datasets:[{label:'profit',data:[7454.0, 9388.0, 11182.0, 12836.0, 14351.0, 15726.0, 16961.0, 18056.0, 19012.0, 19828.0, 20505.0, 21042.0, 21439.0, 21696.0, 21814.0, 21792.0, 21631.0, 21329.0, 20888.0, 20308.0, 19587.0, 18727.0, 17728.0, 16588.0, 15309.0, 13891.0, 12332.0, 10634.0, 8797.0, 6819.0, 4702.0],borderColor:'#123a5e',tension:.3,pointRadius:0}]},
+  options:{plugins:{legend:{display:false}},scales:{x:{title:{display:true,text:'price ($)'}}}}});
+new Chart(c2,{type:'bar',data:{labels:['EMSR-b','FCFS (naive)'],datasets:[{data:[23284.0,10373.0],backgroundColor:['#14804a','#b42318']}]},
+  options:{plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'expected revenue ($)'}}}}});
+new Chart(c3,{type:'line',data:{labels:[100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140],datasets:[{label:'expected profit',data:[20000.0, 20200.0, 20400.0, 20599.9, 20799.5, 20998.2, 21194.7, 21386.4, 21569.5, 21738.7, 21888.0, 22011.2, 22103.1, 22160.3, 22181.5, 22167.9, 22122.7, 22050.0, 21954.9, 21842.4, 21716.8, 21582.0, 21440.7, 21295.3, 21147.1, 20997.4, 20846.6, 20695.3, 20543.6, 20391.8, 20239.9, 20088.0, 19936.0, 19784.0, 19632.0, 19480.0, 19328.0, 19176.0, 19024.0, 18872.0, 18720.0],borderColor:'#e8a33d',tension:.2,pointRadius:0}]},
+  options:{plugins:{legend:{display:false}},scales:{x:{title:{display:true,text:'seats sold (capacity=100)'}}}}});
+</script></body></html>

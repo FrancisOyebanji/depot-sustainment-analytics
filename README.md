@@ -1,10 +1,32 @@
-# Supply Chain & Operations Analytics — Planning COE + Operations-Research Digital Twin
+# Decision Science & Operations Research — Revenue Management, Optimization, Forecasting & Simulation
 
-**A supply-chain planning and operations-analytics system: demand forecasting, inventory optimization, network design, and ABC/XYZ demand mining with a predictive fast-mover model — on top of an MRO operations-research pipeline (PySpark data pipeline, constraint analysis, discrete-event simulation). Python + SQL.**
+**A decision-science toolkit across the techniques a decision scientist uses: revenue management & pricing (nonlinear price optimization, EMSR seat protection, stochastic overbooking), supply-chain optimization (demand forecasting, inventory optimization, facility-location network design), and an operations-research digital twin (discrete-event simulation, Theory of Constraints) — every optimum graded against a known solution or Monte Carlo simulation. Python + SQL.**
 
-> **In one breath (Supply Chain Planning focus):** Built a supply-chain planning suite spanning the COE's full scope — an ML demand-forecasting backtest that beats a seasonal-naive baseline by ~15% WAPE on a held-out quarter, inventory optimization (safety stock / reorder point / EOQ) whose (s,Q) policies are *simulation-validated* to hit a 95% service level, a capacitated facility-location network design solved with a drop heuristic that matches the brute-force optimum (saving ~7% vs opening all DCs), and ABC/XYZ demand mining plus a gradient-boosted fast-mover classifier (ROC-AUC 0.71) — every model graded against known ground truth, atop an operations-research digital twin for capacity/bottleneck analysis.
+> **In one breath (Decision Science / Revenue Management focus):** Built a decision-science toolkit spanning pricing, revenue management, resource allocation, forecasting, optimization and simulation — nonlinear price optimization that recovers the true profit-maximizing price from noisy demand data, EMSR-b seat protection that lifts expected revenue ~124% over naive allocation in a booking simulation, stochastic overbooking whose analytic optimum matches Monte Carlo to within a fraction of a percent, plus supply-chain demand forecasting, (s,Q) inventory optimization validated to a 95% service level, and facility-location network design matched to the brute-force optimum — all atop an operations-research digital twin (discrete-event simulation, Theory of Constraints), every result graded against ground truth.
 
-## Supply Chain Planning COE (headline for the Supply Chain data-science role)
+## Revenue Management & Pricing (headline for the Decision Scientist role)
+
+The revenue-management and pricing decisions a decision scientist models — pricing, capacity allocation, overbooking — each solved with the right optimization technique and validated by simulation against a known optimum:
+
+```bash
+pip install -r requirements.txt
+PYTHONPATH=src python -m revenue_management.run_revenue       # pricing -> capacity allocation -> overbooking
+PYTHONPATH=src python -m revenue_management.build_dashboard   # revenue-management dashboard
+PYTHONPATH=src python -m pytest tests/test_revenue_management.py -q   # 3 tests, graded vs optima + simulation
+```
+
+| Problem | Technique | Result (graded vs ground truth) |
+|---|---|---|
+| **Price optimization** ([price_optimization.py](src/revenue_management/price_optimization.py)) | demand estimation + **nonlinear optimization** | recovers true optimal price (73.0 vs 72.5), R² 0.96, elasticity at optimum |
+| **Capacity allocation** ([capacity_allocation.py](src/revenue_management/capacity_allocation.py)) | **EMSR-b** nested seat protection | **+124% expected revenue** vs naive FCFS in booking simulation |
+| **Overbooking** ([overbooking.py](src/revenue_management/overbooking.py)) | **stochastic optimization** (Binomial no-shows) | optimal sell-limit; analytic profit **matches Monte Carlo** within <2% |
+| **Booking simulation** ([booking_simulation.py](src/revenue_management/booking_simulation.py)) | Monte Carlo | validates every policy against its baseline |
+
+The through-line is **the right technique for each decision, validated against a known answer**: a nonlinear program for pricing, a protection heuristic for capacity allocation, and a stochastic optimization for overbooking — each checked against an analytic optimum or a Monte Carlo simulation, not just asserted. That maps directly to the JD's revenue management, pricing, resource allocation, nonlinear/stochastic optimization, and simulation asks.
+
+---
+
+## Supply Chain Planning (forecasting, inventory & network optimization)
 
 The planning work the COE runs — forecasting, inventory, network, and demand mining — each graded against a known data-generating process:
 

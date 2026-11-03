@@ -1,0 +1,220 @@
+{
+  "price_optimization": {
+    "demand_estimate": {
+      "a_hat": 978.22,
+      "b_hat": 7.76,
+      "r_squared": 0.9568
+    },
+    "true_params": {
+      "a": 1000.0,
+      "b": 8.0
+    },
+    "optimization": {
+      "optimal_price": 73.03,
+      "optimal_quantity": 411.5,
+      "optimal_profit": 21822.2,
+      "optimal_revenue": 30052.4,
+      "elasticity_at_optimum": -1.377
+    },
+    "true_optimal_price": 72.5,
+    "price_abs_error": 0.53,
+    "price_within_5pct": true
+  },
+  "capacity_allocation": {
+    "booking_limits": [
+      100,
+      78,
+      35,
+      0
+    ],
+    "protection_levels": [
+      0,
+      22.5,
+      65.5,
+      100.0
+    ],
+    "revenue_emsr": 23284.0,
+    "revenue_fcfs": 10373.0,
+    "revenue_uplift_pct": 124.46,
+    "emsr_beats_fcfs": true,
+    "pct_of_ceiling": 58.2
+  },
+  "overbooking": {
+    "optimal_sell_limit": 114,
+    "overbooking_seats": 14,
+    "expected_profit_optimal": 22181.5,
+    "expected_profit_no_overbooking": 20000.0,
+    "profit_gain_vs_no_overbooking": 2181.5,
+    "expected_denied_at_optimal": 1.546,
+    "profit_curve": [
+      [
+        100,
+        20000.0
+      ],
+      [
+        101,
+        20200.0
+      ],
+      [
+        102,
+        20400.0
+      ],
+      [
+        103,
+        20599.9
+      ],
+      [
+        104,
+        20799.5
+      ],
+      [
+        105,
+        20998.2
+      ],
+      [
+        106,
+        21194.7
+      ],
+      [
+        107,
+        21386.4
+      ],
+      [
+        108,
+        21569.5
+      ],
+      [
+        109,
+        21738.7
+      ],
+      [
+        110,
+        21888.0
+      ],
+      [
+        111,
+        22011.2
+      ],
+      [
+        112,
+        22103.1
+      ],
+      [
+        113,
+        22160.3
+      ],
+      [
+        114,
+        22181.5
+      ],
+      [
+        115,
+        22167.9
+      ],
+      [
+        116,
+        22122.7
+      ],
+      [
+        117,
+        22050.0
+      ],
+      [
+        118,
+        21954.9
+      ],
+      [
+        119,
+        21842.4
+      ],
+      [
+        120,
+        21716.8
+      ],
+      [
+        121,
+        21582.0
+      ],
+      [
+        122,
+        21440.7
+      ],
+      [
+        123,
+        21295.3
+      ],
+      [
+        124,
+        21147.1
+      ],
+      [
+        125,
+        20997.4
+      ],
+      [
+        126,
+        20846.6
+      ],
+      [
+        127,
+        20695.3
+      ],
+      [
+        128,
+        20543.6
+      ],
+      [
+        129,
+        20391.8
+      ],
+      [
+        130,
+        20239.9
+      ],
+      [
+        131,
+        20088.0
+      ],
+      [
+        132,
+        19936.0
+      ],
+      [
+        133,
+        19784.0
+      ],
+      [
+        134,
+        19632.0
+      ],
+      [
+        135,
+        19480.0
+      ],
+      [
+        136,
+        19328.0
+      ],
+      [
+        137,
+        19176.0
+      ],
+      [
+        138,
+        19024.0
+      ],
+      [
+        139,
+        18872.0
+      ],
+      [
+        140,
+        18720.0
+      ]
+    ],
+    "sim_profit_optimal": 22176.1,
+    "sim_profit_no_overbooking": 20000.0,
+    "sim_mean_denied": 1.56,
+    "overbooking_beats_baseline": true
+  }
+}
